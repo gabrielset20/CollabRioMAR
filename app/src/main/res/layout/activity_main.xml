@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="196dp"
+        android:layout_marginEnd="93dp"
+        android:src="@drawable/ic_logo"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/appName"
+        android:layout_width="216dp"
+        android:layout_height="52dp"
+        android:layout_below="@+id/collabAppName"
+        android:layout_alignStart="@+id/collabAppName"
+        android:layout_alignEnd="@+id/collabAppName"
+        android:layout_marginStart="-61dp"
+        android:layout_marginTop="-6dp"
+        android:layout_marginEnd="-59dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:gravity="center"
+        android:text="RIO MAR"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="32sp"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/collabAppName"
+        android:layout_width="82dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logoImage"
+        android:layout_alignStart="@+id/logoImage"
+        android:layout_alignEnd="@+id/logoImage"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="83dp"
+        android:fontFamily="@font/montserrat_light"
+        android:text="Collab"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</RelativeLayout>
