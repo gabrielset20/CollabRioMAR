@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:id="@+id/main"
     tools:context=".HomeActivity"
-    android:background="#FFE9B7">
+    android:background="@color/azul_escuro">
 
         <!-- Logo -->
         <ImageView
@@ -38,7 +38,7 @@
         android:fontFamily="@font/montserrat"
         android:text="Bem-vindos ao Collab Rio Mar app!"
         android:textAlignment="center"
-        android:textColor="#000000"
+        android:textColor="@color/white"
         android:textSize="24sp" />
 
     <TextView
@@ -55,7 +55,7 @@
         android:fontFamily="@font/montserrat_light"
         android:text="Explore e colabore com a Plataforma Colaborativa de Monitoramento de Objetos Plásticos em Rios e Mares (Fluvial). Este aplicativo georreferenciado permite que você registre e visualize ocorrências de poluição plástica utilizando seu celular."
         android:textAlignment="center"
-        android:textColor="#000000"
+        android:textColor="@color/white"
         android:textSize="16sp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

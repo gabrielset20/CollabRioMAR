@@ -8,6 +8,7 @@
         android:maxSdkVersion="28" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
     <uses-feature android:name="android.hardware.camera" />
 
     <application
@@ -20,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RioMarAppNav"
         tools:targetApi="31">
+        <activity
+            android:name=".EditInfoActivity"
+            android:exported="false" />
         <activity
             android:name=".HelpActivity"
             android:exported="false" />

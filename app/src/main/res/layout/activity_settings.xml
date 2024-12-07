@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:id="@+id/main"
     tools:context=".SettingsActivity"
-    android:background="#FFE9B7">
+    android:background="@color/azul_escuro">
 
     <!-- Texto de boas-vindas -->
     <TextView
@@ -20,7 +20,7 @@
         android:layout_marginTop="48dp"
         android:fontFamily="sans-serif-medium"
         android:text="Olá, Luis!"
-        android:textColor="@color/black"
+        android:textColor="@color/laranja"
         android:textSize="24sp" />
 
     <!-- Foto de perfil -->
@@ -52,6 +52,8 @@
         android:drawablePadding="12dp"
         android:fontFamily="@font/montserrat_light"
         android:hint="Buscar Configurações"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
         android:inputType="text"
         android:paddingHorizontal="15dp"
         android:textSize="12sp" />
@@ -75,6 +77,7 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:text="Editar Informações"
+            android:textColor="@color/white"
             android:fontFamily="@font/montserrat_light"
             android:textSize="12sp"
             android:drawableStart="@drawable/ic_editar"
@@ -96,13 +99,15 @@
         android:layout_marginEnd="51dp"
         android:background="@drawable/bottom_background"
         android:clickable="true"
-        android:focusable="true">
+        android:focusable="true"
+        >
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:text="Tema"
+            android:textColor="@color/white"
             android:fontFamily="@font/montserrat_light"
             android:textSize="12sp"
             android:drawableStart="@drawable/ic_modotheme"
@@ -110,6 +115,13 @@
             android:gravity="center_vertical|start"
             android:paddingStart="15dp"
             android:paddingEnd="15dp" />
+
+        <Switch
+            android:id="@+id/switchDarkMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="16dp"/>
     </FrameLayout>
 
 
@@ -132,6 +144,7 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:text="Gerenciar Permissões"
+            android:textColor="@color/white"
             android:fontFamily="@font/montserrat_light"
             android:textSize="12sp"
             android:drawableStart="@drawable/ic_permissoes"
@@ -162,6 +175,7 @@
             android:layout_centerInParent="true"
             android:drawableStart="@drawable/ic_ajuda"
             android:drawablePadding="12dp"
+            android:textColor="@color/white"
             android:fontFamily="@font/montserrat_light"
             android:gravity="center_vertical|start"
             android:paddingStart="15dp"
@@ -192,6 +206,7 @@
             android:layout_centerInParent="true"
             android:drawableStart="@drawable/ic_informacoes"
             android:drawablePadding="12dp"
+            android:textColor="@color/white"
             android:fontFamily="@font/montserrat_light"
             android:gravity="center_vertical|start"
             android:paddingStart="15dp"
