@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "638333623636",
+    "project_id": "colabriomar",
+    "storage_bucket": "colabriomar.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:638333623636:android:03106770dabcae1efa3cc1",
+        "android_client_info": {
+          "package_name": "com.example.riomarappnav"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "638333623636-17c8qq7fq9gkeght8im376vnkdslk6s1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.riomarappnav",
+            "certificate_hash": "0f398d8b07728ba2599449ec911a5d419068aaa5"
+          }
+        },
+        {
+          "client_id": "638333623636-hrtu6t81equ5vtimdh0kip875jvd3pbk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDV2eP9_jYkfrpRrDchjxXuZS06s5-coZc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "638333623636-hrtu6t81equ5vtimdh0kip875jvd3pbk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

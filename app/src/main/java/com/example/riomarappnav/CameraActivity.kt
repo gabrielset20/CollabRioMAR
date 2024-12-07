@@ -20,6 +20,7 @@ import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
+@Suppress("DEPRECATION")
 class CameraActivity : AppCompatActivity() {
 
     private lateinit var previewView: PreviewView

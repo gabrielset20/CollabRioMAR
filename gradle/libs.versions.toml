@@ -1,5 +1,5 @@
 [versions]
-agp = "8.7.2"
+agp = "8.7.3"
 kotlin = "2.0.0"
 coreKtx = "1.15.0"
 junit = "4.13.2"
@@ -15,6 +15,9 @@ constraintlayout = "2.1.4"
 cameraCore = "1.4.0"
 cameraLifecycle = "1.4.0"
 cameraView = "1.4.0"
+firebaseAuthKtx = "23.1.0"
+googleGmsGoogleServices = "4.4.2"
+firebaseAuth = "23.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -38,9 +41,12 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 androidx-camera-core = { group = "androidx.camera", name = "camera-core", version.ref = "cameraCore" }
 androidx-camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "cameraLifecycle" }
 androidx-camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "cameraView" }
+firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx", version.ref = "firebaseAuthKtx" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
 
