@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.storage.CacheResetOnProcessCanceled.enabled
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -40,15 +42,16 @@ android {
     }
 
     buildFeatures {
+        viewBinding = true
         compose = true
         buildConfig = true
         viewBinding = true
     }
 
+
     composeOptions {
         kotlinCompilerExtensionVersion = "2.0.0" // Versão correta para o Kotlin 2.0 e Compose
     }
-
 }
 
 dependencies {
@@ -110,4 +113,8 @@ dependencies {
     // UI Tests
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    // datastore
+    implementation ("androidx.datastore:datastore-preferences:1.0.0")
+
 }

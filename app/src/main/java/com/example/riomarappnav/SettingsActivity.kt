@@ -8,10 +8,16 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Switch
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.example.riomarappnav.ui.theme.ThemePreferenceManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 
 class SettingsActivity : AppCompatActivity() {
@@ -19,20 +25,32 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var tvWelcome: TextView
     private lateinit var ivProfilePicture: ImageView
 
+    private lateinit var themeManager: ThemePreferenceManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+
+
+        themeManager = ThemePreferenceManager(this)
+
+        val darkModeSwitch = findViewById<Switch>(R.id.switchDarkMode)
 
         tvWelcome = findViewById(R.id.tvWelcome)
         ivProfilePicture = findViewById(R.id.ivProfilePicture)
 
         // Simulação de Info de usuário
         val userName = "Luis"
-        val profileImageUrl = "https://pixabay.com/photos/cat-domestic-cat-animal-8611246/"
+        val profileImageUrl = "https://as2.ftcdn.net/v2/jpg/05/60/44/93/1000_F_560449312_I6FTJ1HWythaLutWDMuHvJy2IoCv20iJ.jpg"
 
-        // Atualiza a UI
+        // Atualiza o nome
         tvWelcome.text = "Olá, $userName!"
-        Glide.with(this).load(profileImageUrl).into(ivProfilePicture)
+
+        // CircleCrop para deixar a imagem redonda
+        Glide.with(this)
+            .load(profileImageUrl)
+            .transform(CircleCrop()) // Aplica o corte circular na imagem
+            .into(ivProfilePicture)
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigation)
         bottomNavigationView.selectedItemId = R.id.bottom_profile
@@ -127,12 +145,24 @@ class SettingsActivity : AppCompatActivity() {
             }
         }
 
-
-        // Clicar demais botões
-        findViewById<View>(R.id.llTema).setOnClickListener {
+        lifecycleScope.launch {
+            val isDarkMode = themeManager.isDarkModeEnabled.first() ?: false
+            darkModeSwitch.isChecked = isDarkMode
         }
 
+        darkModeSwitch.setOnCheckedChangeListener { _, isChecked ->
+            lifecycleScope.launch {
+                themeManager.setDarkMode(isChecked)
+                recreate() // Reinicia a atividade para aplicar o tema
+            }
+        }
+
+
+        // Clicar demais botões
+
         findViewById<View>(R.id.llEditInfo).setOnClickListener {
+            val intent = Intent(this, EditInfoActivity::class.java)
+            startActivity(intent)
         }
 
         findViewById<View>(R.id.llPermissoes).setOnClickListener {
@@ -142,6 +172,8 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         findViewById<View>(R.id.llAjuda).setOnClickListener {
+            val intent = Intent(this, HelpActivity::class.java)
+            startActivity(intent)
         }
 
     }

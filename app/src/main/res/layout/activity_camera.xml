@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:id="@+id/main"
     tools:context=".CameraActivity"
-    android:background="#FFE09B">
+    android:background="@color/azul_escuro">
 
     <!-- Preview da câmera -->
     <androidx.camera.view.PreviewView
