@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.riomarappnav.MainActivity
 import com.example.riomarappnav.R
 import com.example.riomarappnav.databinding.ActivityRegisterBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -37,7 +38,7 @@ class RegisterActivity : AppCompatActivity() {
             val email = binding.emailRegister.text.toString()
             val password = binding.passwordRegister.text.toString()
             if(email.isNotEmpty() && password.isNotEmpty())
-                LoginMain.auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
+                MainActivity.auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
                     if(it.isSuccessful){
                         startActivity(Intent(this, LoginActivity::class.java))
                         finish()
@@ -65,10 +66,10 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
-        LoginMain.auth.signInWithCredential(credential)
+        MainActivity.auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    startActivity(Intent(this, LoginMain::class.java))
+                    startActivity(Intent(this, MainActivity::class.java))
                     finish()
                 }
             }.addOnFailureListener {

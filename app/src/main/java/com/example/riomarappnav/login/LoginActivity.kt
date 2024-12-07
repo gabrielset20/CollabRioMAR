@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.riomarappnav.MainActivity
 import com.example.riomarappnav.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -22,9 +23,9 @@ class LoginActivity : AppCompatActivity() {
             val email = binding.emailLogin.text.toString()
             val password = binding.passwordLogin.text.toString()
             if(email.isNotEmpty() && password.isNotEmpty())
-                LoginMain.auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+                MainActivity.auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                     if(it.isSuccessful){
-                        startActivity(Intent(this, LoginMain::class.java))
+                        startActivity(Intent(this, MainActivity::class.java)) //trocar pra activity desejada
                         finish()
                     }
                 }.addOnFailureListener {
