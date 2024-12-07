@@ -115,8 +115,8 @@ class CameraActivity : AppCompatActivity() {
                 // Selecionar a câmera traseira
                 val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
 
-                // Vincular os casos de uso à câmera
-                cameraProvider.unbindAll()  // Liberar quaisquer casos de uso anteriormente vinculados
+                // Ver os usos da câmera
+                cameraProvider.unbindAll()  // Liberar quaisquer casos de uso anteriores
                 cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture)
             } catch (exc: Exception) {
                 Log.e("CameraActivity", "Falha ao iniciar a câmera", exc)
@@ -137,7 +137,7 @@ class CameraActivity : AppCompatActivity() {
         val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
 
         try {
-            // Vincular os casos de uso à câmera
+            // Verficar uso da camera
             cameraProvider.unbindAll()
             cameraProvider.bindToLifecycle(
                 this as LifecycleOwner, cameraSelector, preview, imageCapture

@@ -40,6 +40,7 @@ android {
 
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 
     composeOptions {
@@ -51,6 +52,12 @@ android {
 dependencies {
     // Material Design
     implementation("com.google.android.material:material:1.9.0")
+
+    // Glide
+    implementation ("com.github.bumptech.glide:glide:4.15.1")
+    implementation(libs.androidx.activity)
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")
+
 
     // AndroidX Libraries
     implementation("androidx.core:core-ktx:1.12.0")
