@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/main"
-    tools:context=".SettingsActivity"
+    tools:context=".telaprincipal.SettingsActivity"
     android:background="@color/azul_escuro">
 
     <!-- Texto de boas-vindas -->

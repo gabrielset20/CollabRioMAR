@@ -1,4 +1,4 @@
-package com.example.riomarappnav
+package com.example.riomarappnav.telaprincipal.Help
 
 import android.content.Intent
 import android.net.Uri

@@ -1,9 +1,11 @@
-package com.example.riomarappnav
+package com.example.riomarappnav.telaprincipal
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import com.example.riomarappnav.CameraActivity
+import com.example.riomarappnav.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 

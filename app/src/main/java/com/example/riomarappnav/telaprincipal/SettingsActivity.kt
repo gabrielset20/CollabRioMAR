@@ -1,4 +1,4 @@
-package com.example.riomarappnav
+package com.example.riomarappnav.telaprincipal
 
 import android.content.Intent
 import android.os.Bundle
@@ -14,7 +14,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
-import com.example.riomarappnav.ui.theme.ThemePreferenceManager
+import com.example.riomarappnav.CameraActivity
+import com.example.riomarappnav.telaprincipal.EditInfo.EditInfoActivity
+import com.example.riomarappnav.telaprincipal.Help.HelpActivity
+import com.example.riomarappnav.R
+import com.example.riomarappnav.ThemePreferenceManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch

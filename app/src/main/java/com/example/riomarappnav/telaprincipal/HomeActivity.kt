@@ -1,10 +1,12 @@
-package com.example.riomarappnav
+package com.example.riomarappnav.telaprincipal
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.riomarappnav.CameraActivity
+import com.example.riomarappnav.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 @Suppress("DEPRECATION")

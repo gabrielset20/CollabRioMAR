@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import com.example.riomarappnav.login.RegisterActivity
+import com.example.riomarappnav.telaprincipal.HomeActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
@@ -31,7 +32,6 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }, 3000)
-
         }
     }
 }

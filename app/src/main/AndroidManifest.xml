@@ -22,10 +22,10 @@
         android:theme="@style/Theme.RioMarAppNav"
         tools:targetApi="31">
         <activity
-            android:name=".EditInfoActivity"
+            android:name=".telaprincipal.EditInfo.EditInfoActivity"
             android:exported="false" />
         <activity
-            android:name=".HelpActivity"
+            android:name=".telaprincipal.Help.HelpActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -38,16 +38,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SettingsActivity"
+            android:name=".telaprincipal.SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".RankingActivity"
+            android:name=".telaprincipal.RankingActivity"
             android:exported="false" />
         <activity
             android:name=".CameraActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".telaprincipal.HomeActivity"
             android:exported="false" />
 
         <activity

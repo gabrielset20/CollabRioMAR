@@ -1,4 +1,4 @@
-package com.example.riomarappnav
+package com.example.riomarappnav.telaprincipal.EditInfo
 
 import android.net.Uri
 import android.os.Bundle

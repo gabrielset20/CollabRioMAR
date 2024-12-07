@@ -1,4 +1,4 @@
-package com.example.riomarappnav.ui.theme
+package com.example.riomarappnav
 
 import android.content.Context
 import androidx.datastore.preferences.core.booleanPreferencesKey
