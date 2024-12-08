@@ -117,4 +117,8 @@ dependencies {
     // datastore
     implementation ("androidx.datastore:datastore-preferences:1.0.0")
 
+    // TensorFlow
+    implementation("org.tensorflow:tensorflow-lite:2.14.0")
+    implementation("org.tensorflow:tensorflow-lite-support:0.4.4")
+
 }
