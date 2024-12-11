@@ -1,23 +1,23 @@
 package com.example.riomarappnav.telaprincipal
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.Switch
-import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
-import com.example.riomarappnav.telaprincipal.EditInfo.EditInfoActivity
-import com.example.riomarappnav.telaprincipal.Help.HelpActivity
 import com.example.riomarappnav.R
 import com.example.riomarappnav.ThemePreferenceManager
+import com.example.riomarappnav.database.FirestoreRepository
+import com.example.riomarappnav.telaprincipal.EditInfo.EditInfoActivity
+import com.example.riomarappnav.telaprincipal.Help.HelpActivity
 import com.example.riomarappnav.telaprincipal.camerapred.CameraActivity
 import com.example.riomarappnav.telaprincipal.telaRanking.RankingActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -28,11 +28,17 @@ import kotlinx.coroutines.launch
 @Suppress("DEPRECATION")
 class SettingsActivity : AppCompatActivity() {
 
-    private lateinit var tvWelcome: TextView
-    private lateinit var ivProfilePicture: ImageView
+    private lateinit var etWelcomeName: EditText
 
     private lateinit var themeManager: ThemePreferenceManager
+    private lateinit var firestoreRepository: FirestoreRepository
 
+    private fun recuperarNomeLocal(): String? {
+        val sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE)
+        return sharedPreferences.getString("usuario_nome", null)
+    }
+
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
@@ -42,21 +48,31 @@ class SettingsActivity : AppCompatActivity() {
 
         val darkModeSwitch = findViewById<Switch>(R.id.switchDarkMode)
 
-        tvWelcome = findViewById(R.id.tvWelcome)
-        ivProfilePicture = findViewById(R.id.ivProfilePicture)
+        etWelcomeName = findViewById(R.id.etWelcomeName)
+        firestoreRepository = FirestoreRepository()
 
-        // Simulação de Info de usuário
-        val userName = "Luis"
-        val profileImageUrl = "https://as2.ftcdn.net/v2/jpg/05/60/44/93/1000_F_560449312_I6FTJ1HWythaLutWDMuHvJy2IoCv20iJ.jpg"
+        val etWelcomeName = findViewById<EditText>(R.id.etWelcomeName)
+        val btnConfirmName = findViewById<Button>(R.id.btnConfirmName)
 
-        // Atualiza o nome
-        tvWelcome.text = "Olá, $userName!"
 
-        // CircleCrop para deixar a imagem redonda
-        Glide.with(this)
-            .load(profileImageUrl)
-            .transform(CircleCrop()) // Aplica o corte circular na imagem
-            .into(ivProfilePicture)
+        etWelcomeName.setText(recuperarNomeLocal())
+
+        btnConfirmName.setOnClickListener {
+            val nome = etWelcomeName.text.toString().trim()
+            if (nome.isNotEmpty()) {
+                salvarNomeLocalmente(nome)
+                Toast.makeText(this, "Nome confirmado: $nome", Toast.LENGTH_SHORT).show()
+                firestoreRepository.atualizarNomeUsuario(nome) { sucesso ->
+                    if (sucesso) {
+                        Toast.makeText(this, "Nome salvo com sucesso!", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this, "Erro ao salvar nome.", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } else {
+                Toast.makeText(this, "Por favor, insira um nome válido.", Toast.LENGTH_SHORT).show()
+            }
+        }
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigation)
         bottomNavigationView.selectedItemId = R.id.bottom_profile
@@ -182,6 +198,12 @@ class SettingsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+    }
+    private fun salvarNomeLocalmente(nome: String) {
+        val sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("usuario_nome", nome)
+        editor.apply()
     }
 
 }

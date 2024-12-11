@@ -26,13 +26,10 @@ class RankingActivity : AppCompatActivity() {
         val recyclerView: RecyclerView = findViewById(R.id.rvRankingList)
         recyclerView.layoutManager = LinearLayoutManager(this)
         val firestoreRepository = FirestoreRepository ()
-
-        // Obtem os dados do Firebase
         firestoreRepository.fetchUserData { userDataList ->
             // Ordena os dados pelos troféus em ordem decrescente
             val sortedList = userDataList.sortedByDescending { it.trophies }.take(20)
 
-            // Configura o Adapter
             rankingAdapter = RankingAdapter(sortedList)
             recyclerView.adapter = rankingAdapter
         }

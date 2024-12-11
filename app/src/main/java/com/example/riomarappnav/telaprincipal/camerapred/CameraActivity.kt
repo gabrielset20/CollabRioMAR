@@ -28,8 +28,8 @@ import com.example.riomarappnav.modelYolov8n.Constants.LABELS_PATH
 import com.example.riomarappnav.modelYolov8n.Constants.MODEL_PATH
 import com.example.riomarappnav.modelYolov8n.Detector
 import com.example.riomarappnav.telaprincipal.HomeActivity
-import com.example.riomarappnav.telaprincipal.telaRanking.RankingActivity
 import com.example.riomarappnav.telaprincipal.SettingsActivity
+import com.example.riomarappnav.telaprincipal.telaRanking.RankingActivity
 import com.example.riomarappnav.trophiesgenerator.TrophyGenerator
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -280,7 +280,14 @@ class CameraActivity : AppCompatActivity(), Detector.DetectorListener {
             listaDeClassesPredistas
         )
         val trophyGenerator = TrophyGenerator(firestoreRepository) // Passe o repositório no construtor
-        trophyGenerator.gerenciarTrofeus("NomeDoUsuario", listaDeClassesPredistas) { sucesso ->
+        val nomeDoUsuario = firestoreRepository.buscarNomeUsuario { nomeUsuario ->
+            if (nomeUsuario != null) {
+                println("Nome do usuário: $nomeUsuario")
+            } else {
+                println("Não foi possível obter o nome do usuário.")
+            }
+        }
+        trophyGenerator.gerenciarTrofeus(nomeDoUsuario.toString(), listaDeClassesPredistas) { sucesso ->
             if (sucesso) {
                 Log.d("TrophyGenerator", "Troféus gerenciados com sucesso!")
             } else {

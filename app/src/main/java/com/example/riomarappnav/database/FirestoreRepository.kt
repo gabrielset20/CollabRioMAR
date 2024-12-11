@@ -97,6 +97,58 @@ class FirestoreRepository {
         }
     }
 
+    /**
+     * Atualiza o nome do usuário na coleção trofeusUsuario.
+     * @param novoNome Novo nome do usuário.
+     * @param onResult Callback que retorna sucesso ou falha da operação.
+     */
+    fun atualizarNomeUsuario(novoNome: String, onResult: (Boolean) -> Unit) {
+        val userId = getCurrentUserId()
+        if (userId == null) {
+            onResult(false) // Falha se o usuário não estiver autenticado
+            return
+        }
+
+        val trofeusRef = db.collection("trofeusUsuario").document(userId)
+
+        trofeusRef.update("nomeUser", novoNome)
+            .addOnSuccessListener {
+                onResult(true) // Sucesso na atualização
+            }
+            .addOnFailureListener {
+                onResult(false) // Falha na atualização
+            }
+    }
+
+    /**
+     * Consulta o nome do usuário na tabela trofeusUsuario.
+     * @param onResult Callback que retorna o nome do usuário ou nulo em caso de falha.
+     */
+    fun buscarNomeUsuario(onResult: (String?) -> Unit) {
+        val userId = getCurrentUserId()
+        if (userId == null) {
+            onResult(null) // Retorna nulo se o usuário não estiver autenticado
+            return
+        }
+
+        val trofeusRef = db.collection("trofeusUsuario").document(userId)
+
+        trofeusRef.get()
+            .addOnSuccessListener { document ->
+                if (document.exists()) {
+                    val nomeUsuario = document.getString("nomeUser")
+                    onResult(nomeUsuario) // Retorna o nome do usuário
+                } else {
+                    onResult(null) // Retorna nulo se o documento não existir
+                }
+            }
+            .addOnFailureListener {
+                onResult(null) // Retorna nulo em caso de erro
+            }
+    }
+
+
+
     fun fetchUserData(onResult: (List<UserData>) -> Unit) {
         val db = FirebaseFirestore.getInstance()
         db.collection("trofeusUsuario")
@@ -118,5 +170,7 @@ class FirestoreRepository {
     }
 
     data class UserData(val name: String, val trophies: Int)
+
+
 
 }
