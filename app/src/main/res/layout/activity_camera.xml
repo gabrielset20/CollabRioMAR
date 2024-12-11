@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/main"
-    tools:context=".CameraActivity"
+    tools:context=".telaprincipal.camerapred.CameraActivity"
     android:background="@color/azul_escuro">
 
     <!-- Preview da câmera -->

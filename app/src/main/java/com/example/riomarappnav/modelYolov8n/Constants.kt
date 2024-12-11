@@ -1,4 +1,4 @@
-package com.example.riomarappnav.model
+package com.example.riomarappnav.modelYolov8n
 // Define um objeto SINGLETON (Classe que possui uma uníca instancia) chamado Constants, ele é usado para armazenar constantes
 // com o path do modelo e do arquivo que contem as classes
 

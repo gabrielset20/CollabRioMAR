@@ -1,12 +1,9 @@
-import org.jetbrains.kotlin.storage.CacheResetOnProcessCanceled.enabled
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose") version "2.0.0"
     alias(libs.plugins.google.gms.google.services)
 }
-
 
 android {
     namespace = "com.example.riomarappnav"
@@ -45,80 +42,81 @@ android {
         viewBinding = true
         compose = true
         buildConfig = true
-        viewBinding = true
     }
 
-
     composeOptions {
-        kotlinCompilerExtensionVersion = "2.0.0" // Versão correta para o Kotlin 2.0 e Compose
+        kotlinCompilerExtensionVersion = "2.0.0"
     }
 }
 
 dependencies {
     // Material Design
-    implementation("com.google.android.material:material:1.9.0")
+    implementation(libs.material.v190)
 
     // Glide
-    implementation ("com.github.bumptech.glide:glide:4.15.1")
+    implementation(libs.glide)
     implementation(libs.androidx.activity)
     implementation(libs.firebase.auth.ktx)
-    annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")
-
+    implementation(libs.play.services.location)
+    implementation(libs.play.services.vision.common)
+    implementation(libs.firebase.database)
+    implementation(libs.firebase.firestore)
+    annotationProcessor(libs.compiler)
 
     // Import the BoM for the Firebase platform
-    implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
+    implementation(platform(libs.firebase.bom))
 
-    // Add the dependency for the Firebase Authentication library
-    // When using the BoM, you don't specify versions in Firebase library dependencies
-    implementation("com.google.firebase:firebase-auth")
-    implementation("com.google.firebase:firebase-analytics")
+    // Firebase Libraries
+    implementation(libs.google.firebase.auth)
+    implementation(libs.firebase.analytics)
 
-    // Also add the dependency for the Google Play services library and specify its version
-    implementation("com.google.android.gms:play-services-auth:21.2.0")
-
+    // Google Play services library
+    implementation(libs.play.services.auth)
 
     // AndroidX Libraries
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
-    implementation("androidx.activity:activity-compose:1.7.2")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation(libs.androidx.core.ktx.v1120)
+    implementation(libs.androidx.lifecycle.runtime.ktx.v262)
+    implementation(libs.androidx.activity.compose.v172)
+    implementation(libs.androidx.appcompat.v170)
+    implementation(libs.androidx.constraintlayout)
 
-    // Dependências do CameraX
-    implementation ("androidx.camera:camera-camera2:1.2.0")
-    implementation ("androidx.camera:camera-lifecycle:1.2.0")
-    implementation("androidx.camera:camera-view:1.2.0")
+    // CameraX
+    implementation(libs.androidx.camera.camera2)
+    implementation(libs.androidx.camera.lifecycle.v120)
+    implementation(libs.androidx.camera.view.v120)
     implementation(libs.androidx.camera.core)
 
     // Testing
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
-    debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit.v115)
+    androidTestImplementation(libs.androidx.espresso.core.v351)
+    androidTestImplementation(libs.ui.test.junit4)
+    debugImplementation(libs.ui.tooling)
+    debugImplementation(libs.ui.test.manifest)
 
     val composeBom = platform("androidx.compose:compose-bom:2024.10.01")
     implementation(composeBom)
     androidTestImplementation(composeBom)
 
-    // Choose one of the following:
     // Material Design 3
-    implementation("androidx.compose.material3:material3")
+    implementation(libs.material3)
 
     // Android Studio Preview support
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    debugImplementation("androidx.compose.ui:ui-tooling")
+    implementation(libs.ui.tooling.preview)
+    debugImplementation(libs.androidx.compose.ui.ui.tooling)
 
     // UI Tests
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
+    androidTestImplementation(libs.androidx.compose.ui.ui.test.junit4)
+    debugImplementation(libs.androidx.compose.ui.ui.test.manifest)
 
-    // datastore
-    implementation ("androidx.datastore:datastore-preferences:1.0.0")
+    // Datastore
+    implementation(libs.androidx.datastore.preferences)
 
-    // TensorFlow
-    implementation("org.tensorflow:tensorflow-lite:2.14.0")
-    implementation("org.tensorflow:tensorflow-lite-support:0.4.4")
+    // TensorFlow Lite
+    implementation(libs.tensorflow.lite)
+    implementation(libs.tensorflow.lite.support)
 
+    // GPS
+
+    implementation("com.google.android.gms:play-services-location:21.0.1")
 }
