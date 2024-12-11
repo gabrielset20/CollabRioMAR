@@ -1,19 +1,42 @@
-package com.example.riomarappnav.telaprincipal
+package com.example.riomarappnav.telaprincipal.telaRanking
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.riomarappnav.R
+import com.example.riomarappnav.database.FirestoreRepository
+import com.example.riomarappnav.telaprincipal.HomeActivity
+import com.example.riomarappnav.telaprincipal.SettingsActivity
 import com.example.riomarappnav.telaprincipal.camerapred.CameraActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 @Suppress("DEPRECATION")
 class RankingActivity : AppCompatActivity() {
+    private lateinit var rankingAdapter: RankingAdapter
+    @SuppressLint("RestrictedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ranking)
+
+        val recyclerView: RecyclerView = findViewById(R.id.rvRankingList)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        val firestoreRepository = FirestoreRepository ()
+
+        // Obtem os dados do Firebase
+        firestoreRepository.fetchUserData { userDataList ->
+            // Ordena os dados pelos troféus em ordem decrescente
+            val sortedList = userDataList.sortedByDescending { it.trophies }.take(20)
+
+            // Configura o Adapter
+            rankingAdapter = RankingAdapter(sortedList)
+            recyclerView.adapter = rankingAdapter
+        }
+
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigation)
         bottomNavigationView.selectedItemId = R.id.bottom_settings
         bottomNavigationView.setOnItemSelectedListener { item: MenuItem ->

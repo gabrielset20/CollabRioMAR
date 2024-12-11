@@ -7,6 +7,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.riomarappnav.R
 import com.example.riomarappnav.telaprincipal.camerapred.CameraActivity
+import com.example.riomarappnav.telaprincipal.telaRanking.RankingActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 @Suppress("DEPRECATION")

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/azul_escuro"
-    tools:context=".telaprincipal.RankingActivity">
+    tools:context=".telaprincipal.telaRanking.RankingActivity">
 
     <!-- Título do Ranking -->
     <TextView
@@ -22,8 +22,6 @@
         android:layout_marginTop="16dp" />
 
     <!-- Card do Usuário Logado -->
-
-    <!-- Lista de Ranking -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/rlCurrentUserCard"
         android:layout_width="325dp"
@@ -63,78 +61,18 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- Bottom Navigation -->
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/rlCurrentListCard"
-        android:layout_width="324dp"
-        android:layout_height="449dp"
+    <!-- RecyclerView para listar o ranking -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRankingList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginVertical="8dp"
         android:background="@drawable/cardlist_background"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.396"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rlCurrentUserCard"
-        app:layout_constraintVertical_bias="0.139">
-
-        <!-- Posição -->
-        <TextView
-            android:id="@+id/tvPosition"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
-            android:text="1"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <!-- Imagem do Usuário -->
-
-        <!-- Nome do Usuário -->
-
-        <ImageView
-            android:id="@+id/ivProfile"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/circle_background"
-            android:scaleType="centerCrop"
-            app:layout_constraintStart_toEndOf="@id/tvPosition"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="João Batista"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@id/ivProfile"
-            app:layout_constraintStart_toEndOf="@id/ivProfile"
-            app:layout_constraintTop_toTopOf="@id/ivProfile" />
-
-        <!-- Pontuação -->
-        <TextView
-            android:id="@+id/tvScore"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/score_background"
-            android:gravity="center"
-            android:text="11"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@id/ivProfile"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/ivProfile" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView

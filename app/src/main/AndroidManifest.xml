@@ -46,7 +46,7 @@
             android:name=".telaprincipal.SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".telaprincipal.RankingActivity"
+            android:name=".telaprincipal.telaRanking.RankingActivity"
             android:exported="false" />
         <activity
             android:name=".telaprincipal.camerapred.CameraActivity"

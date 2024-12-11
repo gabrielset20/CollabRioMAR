@@ -19,6 +19,7 @@ import com.example.riomarappnav.telaprincipal.Help.HelpActivity
 import com.example.riomarappnav.R
 import com.example.riomarappnav.ThemePreferenceManager
 import com.example.riomarappnav.telaprincipal.camerapred.CameraActivity
+import com.example.riomarappnav.telaprincipal.telaRanking.RankingActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch

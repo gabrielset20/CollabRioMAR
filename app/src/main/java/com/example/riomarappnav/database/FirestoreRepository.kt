@@ -97,26 +97,26 @@ class FirestoreRepository {
         }
     }
 
-    /**
-     * Obtém os troféus do usuário.
-     * @param onResult Callback com o número de troféus ou null em caso de falha.
-     */
-    fun obterTrofeusUsuario(onResult: (Int?) -> Unit) {
-        val userId = getCurrentUserId() ?: return onResult(null)
-
+    fun fetchUserData(onResult: (List<UserData>) -> Unit) {
+        val db = FirebaseFirestore.getInstance()
         db.collection("trofeusUsuario")
-            .document(userId)
+            .orderBy("trofeus", com.google.firebase.firestore.Query.Direction.DESCENDING)
+            .limit(20)
             .get()
-            .addOnSuccessListener { document ->
-                if (document != null && document.exists()) {
-                    val trofeus = document.getLong("trofeus")?.toInt()
-                    onResult(trofeus)
-                } else {
-                    onResult(0) // Caso não exista, retorna 0
+            .addOnSuccessListener { result ->
+                val userList = mutableListOf<UserData>()
+                for (document in result) {
+                    val name = document.getString("nomeUser") ?: "Unknown"
+                    val trophies = document.getLong("trofeus")?.toInt() ?: 0
+                    userList.add(UserData(name, trophies))
                 }
+                onResult(userList)
             }
             .addOnFailureListener {
-                onResult(null)
+                onResult(emptyList())
             }
     }
+
+    data class UserData(val name: String, val trophies: Int)
+
 }

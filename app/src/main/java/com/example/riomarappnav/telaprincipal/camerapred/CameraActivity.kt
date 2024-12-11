@@ -28,7 +28,7 @@ import com.example.riomarappnav.modelYolov8n.Constants.LABELS_PATH
 import com.example.riomarappnav.modelYolov8n.Constants.MODEL_PATH
 import com.example.riomarappnav.modelYolov8n.Detector
 import com.example.riomarappnav.telaprincipal.HomeActivity
-import com.example.riomarappnav.telaprincipal.RankingActivity
+import com.example.riomarappnav.telaprincipal.telaRanking.RankingActivity
 import com.example.riomarappnav.telaprincipal.SettingsActivity
 import com.example.riomarappnav.trophiesgenerator.TrophyGenerator
 import com.google.android.gms.common.api.ResolvableApiException
