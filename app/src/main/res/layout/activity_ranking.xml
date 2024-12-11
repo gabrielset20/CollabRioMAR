@@ -12,54 +12,14 @@
         android:id="@+id/tvRankingTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ranking de Registros"
-        android:textSize="28sp"
-        android:textColor="@color/laranja"
+        android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-medium"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
-
-    <!-- Card do Usuário Logado -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/rlCurrentUserCard"
-        android:layout_width="325dp"
-        android:layout_height="68dp"
-        android:layout_margin="16dp"
-        android:layout_marginTop="116dp"
-        android:background="@drawable/card_background"
+        android:text="Ranking de Usuários"
+        android:textColor="@color/laranja"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvRankingTitle">
-
-        <!-- Posição do Usuário -->
-        <TextView
-            android:id="@+id/tvUserPosition"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="3°"
-            android:textColor="@color/laranja"
-            android:textSize="50sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <!-- Mensagem do Usuário -->
-        <TextView
-            android:id="@+id/tvUserMessage"
-            android:layout_width="311dp"
-            android:layout_height="44dp"
-            android:layout_marginStart="8dp"
-            android:text="Você está mais ativo que 80% dos usuários!"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tvUserPosition"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- RecyclerView para listar o ranking -->
     <androidx.recyclerview.widget.RecyclerView
@@ -68,11 +28,12 @@
         android:layout_height="0dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginVertical="8dp"
+        android:layout_marginTop="84dp"
         android:background="@drawable/cardlist_background"
-        app:layout_constraintTop_toBottomOf="@id/rlCurrentUserCard"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tvRankingTitle" />
 
     <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView

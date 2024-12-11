@@ -26,9 +26,11 @@ class RankingAdapter(
     override fun onBindViewHolder(holder: RankingViewHolder, position: Int) {
         val user = userList[position]
         holder.tvName.text = user.name
-        holder.tvTrophies.text = user.trophies.toString()
-        holder.tvPosition.text = (position + 1).toString() // Posição do ranking
+        user.trophies.toString().also { holder.tvTrophies.text = it }
+        (position + 1).toString().also { holder.tvPosition.text = it } // Posição do ranking
     }
 
-    override fun getItemCount(): Int = userList.size
+    override fun getItemCount(): Int {
+        return userList.size
+    }
 }
