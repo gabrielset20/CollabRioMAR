@@ -21,16 +21,13 @@
     <ImageButton
         android:id="@+id/capture_button"
         android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="173dp"
-        android:layout_marginTop="547dp"
-        android:layout_marginEnd="158dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/bottomNavigation"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/circular_button"
-        android:contentDescription="@string/capture_photo"
-        android:src="@drawable/ic_camera" />
+        android:contentDescription="@string/capture_photo" />
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
